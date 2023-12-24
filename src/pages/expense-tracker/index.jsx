@@ -61,6 +61,9 @@ export const ExpenseTracker = () => {
               <p>${expenses}</p>
             </div>
           </div>
+          <br/>
+          <br/>
+          <br/>
           <form className="add-transaction" onSubmit={onSubmit}>
             <input
               type="text"
@@ -76,30 +79,35 @@ export const ExpenseTracker = () => {
               required
               onChange={(e) => setTransactionAmount(e.target.value)}
             />
-            <input
-              type="radio"
-              id="expense"
-              value="expense"
-              checked={transactionType === "expense"}
-              onChange={(e) => setTransactionType(e.target.value)}
-            />
-            <label htmlFor="expense"> Expense</label>
-            <input
-              type="radio"
-              id="income"
-              value="income"
-              checked={transactionType === "income"}
-              onChange={(e) => setTransactionType(e.target.value)}
-            />
-            <label htmlFor="income"> Income</label>
+<div className="radio-group">
+    <div className="radio-option">
+        <input
+            type="radio"
+            id="expense"
+            value="expense"
+            checked={transactionType === "expense"}
+            onChange={(e) => setTransactionType(e.target.value)}
+        />
+        <label htmlFor="expense"> Expense</label>
+    </div>
+    <div className="radio-option">
+        <input
+            type="radio"
+            id="income"
+            value="income"
+            checked={transactionType === "income"}
+            onChange={(e) => setTransactionType(e.target.value)}
+        />
+        <label htmlFor="income"> Income</label>
+    </div>
+</div>
 
             <button type="submit"> Add Transaction</button>
           </form>
         </div>
         {profilePhoto && (
           <div className="profile">
-            {" "}
-            <img className="profile-photo" src={profilePhoto} />
+            <img className="profile-photo" src={profilePhoto} alt="Profile" />
             <button className="sign-out-button" onClick={signUserOut}>
               Sign Out
             </button>
@@ -109,11 +117,11 @@ export const ExpenseTracker = () => {
       <div className="transactions">
         <h3> Transactions</h3>
         <ul>
-          {transactions.map((transaction) => {
+          {transactions.map((transaction, index) => {
             const { description, transactionAmount, transactionType } =
               transaction;
             return (
-              <li>
+              <li key={index}>
                 <h4> {description} </h4>
                 <p>
                   ${transactionAmount} •{" "}

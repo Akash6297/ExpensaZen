@@ -1,6 +1,9 @@
 body {
   font-family: 'Roboto', sans-serif;
-  color: #333;
+  color: #2c3e50; /* Dark text color */
+  background-color: #ecf0f1; /* Light background color */
+  margin: 0;
+  padding: 0;
 }
 
 .container {
@@ -11,20 +14,25 @@ body {
 .expense-tracker {
   width: 100%;
   display: flex;
-  flex-direction: row;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  color: #023047;
+  color: #2c3e50; /* Dark text color */
+  padding: 20px;
+  background: linear-gradient(to right, #3498db, #3498db, #2ecc71); /* Gradient background */
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Box shadow for depth */
 }
 
 .expense-tracker h1 {
-  font-size: 2rem;
-  color: #023047;
+  font-size: 2.5rem;
+  color: #fff; /* White text color */
+  margin-bottom: 10px;
 }
 
 .balance {
   margin-top: 20px;
-  font-size: 1.5rem;
+  font-size: 1.8rem;
+  color: #fff; /* White text color */
 }
 
 .summary {
@@ -32,10 +40,99 @@ body {
   justify-content: space-between;
 }
 
+.income,
+.expenses {
+  flex: 1;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin: 10px;
+}
+
+.income {
+  background: #2ecc71; /* Green color */
+  color: #fff;
+}
+
+.expenses {
+  background: #e74c3c; /* Red color */
+  color: #fff;
+}
+
 .add-transaction {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
+}
+
+.add-transaction .radio-group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.add-transaction .radio-option {
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+  cursor: pointer;
+}
+
+.add-transaction .radio-option label {
+  margin-left: 5px;
+  cursor: pointer;
+  color: #000000;
+  background-color: #3498db;
+}
+
+.add-transaction .radio-option input:checked + label {
+  color: #000000;
+  background-color: #ffcc00;
+}
+
+.add-transaction input {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  width: calc(33.3333% - 10px);
+  box-sizing: border-box;
+}
+
+.add-transaction input[type="radio"] {
+  display: none; /* Hide the default radio buttons */
+}
+
+.add-transaction .radio-group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.add-transaction .radio-option {
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+  cursor: pointer;
+}
+
+.add-transaction .radio-option label {
+  margin-left: 5px;
+}
+
+.add-transaction button {
+  border: none;
+  background: #2ecc71; /* Green color */
+  color: #fff;
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.add-transaction button:hover {
+  background: #27ae60; /* Darker green color on hover */
 }
 
 .transactions ul {
@@ -45,10 +142,11 @@ body {
 
 .transactions li {
   margin-bottom: 10px;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
+  padding: 15px;
+  border-radius: 10px;
   transition: background-color 0.3s ease;
+  background-color: #fff; /* White background */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .transactions li:hover {
@@ -59,46 +157,44 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-left: 20px;
   margin-top: 20px;
 }
 
 .profile-photo {
-  width: 200px;
+  width: 150px;
   border-radius: 50%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Box shadow for images */
 }
 
 .sign-out-button {
   border: none;
   margin-top: 20px;
   width: 150px;
-  background: #3498db;
-  background-image: linear-gradient(to bottom, #3498db, #2980b9);
+  background: #e74c3c; /* Red color */
   border-radius: 10px;
-  color: #ffffff;
+  color: #fff; /* White text color */
   font-size: 1rem;
   font-weight: bold;
-  padding: 10px 20px 10px 20px;
+  padding: 10px 20px;
   text-decoration: none;
   transition: background-color 0.3s ease;
 }
 
 .sign-out-button:hover {
-  background: #3cb0fd;
-  background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+  background: #c0392b; /* Darker red color on hover */
   text-decoration: none;
   cursor: pointer;
 }
 
-@media (max-width: 768px) {
+@media (min-width: 768px) {
   .expense-tracker {
-      flex-direction: column;
+      flex-direction: row;
   }
   .profile {
-      margin-left: 0;
-      margin-top: 20px;
+      margin-left: auto;
   }
   .transactions {
-      margin-left: 0;
+      margin-left: 20px;
+      max-width: 600px;
   }
 }
